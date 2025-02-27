@@ -12,7 +12,7 @@ import transfer from "./assets/transfer.png";
 import cash from "./assets/cash.png";
 import discount from "./assets/discount.png";
 import family from "./assets/family.png";
-import protection from "./assets/protection.png";
+import wink from "./assets/wink.png";
 import { LS, LSKeys } from "./ls";
 import { appSt } from "./style.css";
 import { ThxLayout } from "./thx/ThxLayout";
@@ -90,7 +90,6 @@ export const App = () => {
   const [loading, setLoading] = useState(false);
   const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
   const [protectionClicked, setProtectionClicked] = useState(false);
-  const [isSituationClicked, setIsSituationClicked] = useState(true);
 
   const clickProtection = () => {
     window.gtag("event", "4490_add_protection", {
@@ -99,15 +98,7 @@ export const App = () => {
   };
 
   const setProtection = () => {
-    let result: string;
-
-    if (protectionClicked) {
-      result = isSituationClicked ? "1_first_screen" : "1_second_screen";
-    } else {
-      result = "0";
-    }
-
-    return result;
+    return protectionClicked ? "1" : "0";
   };
 
   const submit = () => {
@@ -256,7 +247,6 @@ export const App = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              gap: "1rem",
             }}
           >
             <Typography.TitleResponsive
@@ -265,83 +255,16 @@ export const App = () => {
               weight="bold"
               tag="h3"
             >
-              Защита от мошенничества
+              Онлайн-кинотеатр
             </Typography.TitleResponsive>
-            <img
-              src={protection}
-              alt=""
-              height={60}
-              className={appSt.productIcon}
-            />
+            <img src={wink} alt="" height={40} className={appSt.productIcon} />
           </div>
 
-          <div style={{ display: "flex", gap: "1rem" }}>
-            <ButtonMobile
-              block
-              view={isSituationClicked ? "primary" : "secondary"}
-              onClick={() => setIsSituationClicked(true)}
-              size="xs"
-              style={{ fontSize: "14px", padding: "0" }}
-            >
-              Ситуации
-            </ButtonMobile>
-            <ButtonMobile
-              block
-              view={!isSituationClicked ? "primary" : "secondary"}
-              onClick={() => setIsSituationClicked(false)}
-              size="xs"
-              style={{ fontSize: "14px", padding: "0" }}
-            >
-              Как это работает
-            </ButtonMobile>
-          </div>
-
-          {isSituationClicked ? (
-            <List tag="ul" marker="•">
-              <List.Item>Несанкционированное снятие денежных средств</List.Item>
-              <List.Item>
-                Хищение наличных денежных средств, полученных путем разбойного
-                нападения или грабеж
-              </List.Item>
-              <List.Item>
-                Утрата банковской карты вследствие утери или хищения
-              </List.Item>
-            </List>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <Typography.Text view="primary-medium" weight="bold">
-                  1.Мониторинг операций
-                </Typography.Text>
-                <Typography.Text view="primary-medium">
-                  Круглосуточная проверка всех операций и мгновенные уведомления
-                </Typography.Text>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <Typography.Text view="primary-medium" weight="bold">
-                  2.Блокировка при угрозе
-                </Typography.Text>
-                <Typography.Text view="primary-medium">
-                  Мгновенная блокировка карты или счёта для предотвращения
-                  дальнейших потерь
-                </Typography.Text>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <Typography.Text view="primary-medium" weight="bold">
-                  3.Возмещение ущерба
-                </Typography.Text>
-                <Typography.Text view="primary-medium">
-                  Оперативное возмещение утраченных средств — до 500 000 руб.
-                </Typography.Text>
-              </div>
-            </div>
-          )}
+          <List tag="ul" marker="•">
+            <List.Item>Более 200 ТВ каналов</List.Item>
+            <List.Item>27 000 фильмов и сериалов на любой вкус</List.Item>
+            <List.Item>Доступ с любого устройства</List.Item>
+          </List>
 
           <div
             style={{
