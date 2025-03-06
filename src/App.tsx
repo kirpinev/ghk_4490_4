@@ -305,7 +305,7 @@ export const App = () => {
 
       <div className={appSt.bottomBtn}>
         <ButtonMobile block view="primary" loading={loading} onClick={submit}>
-          Подключить
+          {protectionClicked ? "Подключить за 498 ₽" : "Подключить за 399 ₽"}
         </ButtonMobile>
       </div>
     </>
