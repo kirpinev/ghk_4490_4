@@ -91,20 +91,14 @@ export const App = () => {
   const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
   const [protectionClicked, setProtectionClicked] = useState(false);
 
-  const clickProtection = () => {
-    window.gtag("event", "4490_add_protection", {
-      variant_name: "4490_4",
-    });
-  };
-
   const setProtection = () => {
-    return protectionClicked ? "1" : "0";
+    return protectionClicked ? 1 : 0;
   };
 
   const submit = () => {
     setLoading(true);
 
-    sendDataToGA({ is_protect: setProtection() }).then(() => {
+    sendDataToGA({ is_film: setProtection() }).then(() => {
       LS.setItem(LSKeys.ShowThx, true);
       setThx(true);
       setLoading(false);
@@ -278,7 +272,6 @@ export const App = () => {
             }}
             onClick={() => {
               setProtectionClicked((prevState) => !prevState);
-              clickProtection();
             }}
           >
             {protectionClicked ? (
